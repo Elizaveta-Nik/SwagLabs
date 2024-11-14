@@ -9,7 +9,6 @@ public class ProductsPage extends BasePage {
     private final By CART_LINK = By.cssSelector(".shopping_cart_link");
     private final String ADD_TO_CART_PATTERN = "//div[text() = '%s']/ancestor::div[@class = 'inventory_item']//button";
 
-
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
