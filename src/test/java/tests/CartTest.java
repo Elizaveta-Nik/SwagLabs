@@ -4,7 +4,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class CartTest extends BaseTest {
-
+    String user = "standard_user";
+    String password = "secret_sauce";
     String productName = "Sauce Labs Backpack";
     String[] productNames = {"Sauce Labs Backpack", "Sauce Labs Bike Light"};
 
@@ -12,11 +13,12 @@ public class CartTest extends BaseTest {
     public void addItemToCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton(productName);
         productsPage.clickShoppingCart();
 
-        softAssert.assertEquals(cartPage.getItemCount(),
+        softAssert.assertEquals(
+                cartPage.getItemCount(),
                 1,
                 "Количество товаров в корзине должно быть 1, после добавления.");
         softAssert.assertEquals(cartPage.getItemName(0),
@@ -29,7 +31,7 @@ public class CartTest extends BaseTest {
     public void addMultipleItemsToCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         for (String productName : productNames) {
             productsPage.clickAddButton(productName);
         }
@@ -51,7 +53,7 @@ public class CartTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         String expectedPrice = "$29.99";
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton(productName);
         productsPage.clickShoppingCart();
 
@@ -65,7 +67,7 @@ public class CartTest extends BaseTest {
     public void removeItemFromCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton(productName);
         productsPage.clickShoppingCart();
         cartPage.removeItem(productName);
@@ -79,7 +81,7 @@ public class CartTest extends BaseTest {
     public void addAndRemoveMultipleItems() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         for (String productName : productNames) {
             productsPage.clickAddButton(productName);
         }
@@ -98,7 +100,7 @@ public class CartTest extends BaseTest {
     public void continueShopping() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.clickAddButton("Sauce Labs Backpack");
         productsPage.clickShoppingCart();
 
