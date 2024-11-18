@@ -38,7 +38,7 @@ public class ProductTest extends BaseTest {
         loginPage.login(user, password);
 
         productsPage.clickSortDropdown();
-        productsPage.sortByAtoZ();
+        productsPage.sort("Name (A to Z)");
 
         List<String> actualNames = productsPage.getProductNames();
         List<String> expectedNames = new ArrayList<>(actualNames);
@@ -58,7 +58,7 @@ public class ProductTest extends BaseTest {
         loginPage.login(user, password);
 
         productsPage.clickSortDropdown();
-        productsPage.sortByZtoA();
+        productsPage.sort("Name (Z to A)");
 
         List<String> actualNames = productsPage.getProductNames();
         List<String> expectedNames = new ArrayList<>(actualNames);
@@ -78,7 +78,7 @@ public class ProductTest extends BaseTest {
         loginPage.login(user, password);
 
         productsPage.clickSortDropdown();
-        productsPage.sortPriceLowToHigh();
+        productsPage.sort("Price (low to high)");
 
         List<Double> actualPrices = productsPage.getProductPrices();
         List<Double> sortedPrices = actualPrices.stream().sorted().collect(Collectors.toList());
@@ -95,7 +95,7 @@ public class ProductTest extends BaseTest {
         loginPage.login(user, password);
 
         productsPage.clickSortDropdown();
-        productsPage.sortPriceHighToLow();
+        productsPage.sort("Price (high to low)");
 
         List<Double> actualPrices = productsPage.getProductPrices();
         List<Double> sortedPrices = actualPrices.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());

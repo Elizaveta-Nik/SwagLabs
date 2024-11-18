@@ -50,24 +50,9 @@ public class ProductsPage extends BasePage {
         driver.findElement(SORT_CONTAINER).click();
     }
 
-    public void sortByAtoZ() {
+    public void sort(String sortParameter) {
         Select sortSelect = new Select(driver.findElement(SORT_CONTAINER));
-        sortSelect.selectByVisibleText("Name (A to Z)");
-    }
-
-    public void sortByZtoA() {
-        Select sortSelect = new Select(driver.findElement(SORT_CONTAINER));
-        sortSelect.selectByVisibleText("Name (Z to A)");
-    }
-
-    public void sortPriceLowToHigh() {
-        Select sortSelect = new Select(driver.findElement(SORT_CONTAINER));
-        sortSelect.selectByVisibleText("Price (low to high)");
-    }
-
-    public void sortPriceHighToLow() {
-        Select sortSelect = new Select(driver.findElement(SORT_CONTAINER));
-        sortSelect.selectByVisibleText("Price (high to low)");
+        sortSelect.selectByVisibleText(sortParameter);
     }
 
     public void waitForElementVisibility(By locator) {
