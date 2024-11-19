@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -14,7 +15,10 @@ public class ProductTest extends BaseTest {
     String user = "standard_user";
     String password = "secret_sauce";
 
-    @Test
+    @Test(testName = "Проверка выхода из меню",
+            description = "Проверяет, что пользователь может выйти через меню бургера.",
+            priority = 1,
+            groups = {"product"})
     public void checkLogoutFromBurgerMenu() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -30,7 +34,10 @@ public class ProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка сортировки товаров по имени A-Z",
+            description = "Проверяет, что товары сортируются по имени от A до Z.",
+            priority = 2,
+            groups = {"product"})
     public void checkProductSortByNameAtoZ() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -50,7 +57,10 @@ public class ProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка сортировки товаров по имени Z-A",
+            description = "Проверяет, что товары сортируются по имени от Z до A.",
+            priority = 3,
+            groups = {"product"})
     public void checkProductSortByNameZtoA() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -71,7 +81,10 @@ public class ProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка сортировки товаров по цене от низкой к высокой",
+            description = "Проверяет, что товары сортируются по цене от низкой к высокой.",
+            priority = 4,
+            groups = {"product"})
     public void checkSortByPriceLowToHigh() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -88,7 +101,10 @@ public class ProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка сортировки товаров по цене от высокой к низкой",
+            description = "Проверяет, что товары сортируются по цене от высокой к низкой.",
+            priority = 5,
+            groups = {"product"})
     public void checkSortByPriceHighToLow() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
