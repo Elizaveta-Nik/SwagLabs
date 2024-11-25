@@ -1,7 +1,8 @@
 package tests;
 
+
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import retrysingletest.Retry;
@@ -16,6 +17,16 @@ public class LoginTest extends BaseTest {
             priority = 1,
             groups = {"login"},
             retryAnalyzer = Retry.class)
+    @Epic("Модуль логина интернет-магазина")//Глобальная задача
+    @Feature("TMS-25")//Подгруппа эпика
+    @Story("TMS-25.11")//"Кто я, что я, чего хочу"
+    @Severity(SeverityLevel.CRITICAL)//желательно
+    @Link("https://www.saucedemo.com/")
+    @Owner("Elizaveta Nikolaenya")//кто ответственный
+    @Issue("BUG-10")
+    @TmsLink("TestKeys-10")
+    @Description("Проверка входа в систему интернет магазина юзера с позитивными кредами")//обязательно, подробное описание
+    @Flaky//если тест нестабильный
     public void checkLogin(String user, String password) {
         loginPage.open();
         loginPage.login(user, password);

@@ -3,6 +3,7 @@
 <suite name="Cross Browser Testing Suite" parallel="tests" thread-count="3">
     <listeners>
         <listener class-name="retrysingletest.AnnotationTransformer"/>
+        <listener class-name="tests.TestListener"/>
     </listeners>
 
     <test name="Login Tests - Chrome">
