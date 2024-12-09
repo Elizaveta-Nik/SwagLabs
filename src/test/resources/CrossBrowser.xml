@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cross Browser Testing Suite" parallel="tests" thread-count="3">
+    <listeners>
+        <listener class-name="retrysingletest.AnnotationTransformer"/>
+        <listener class-name="tests.TestListener"/>
+    </listeners>
+
+    <test name="Login Tests - Chrome">
+        <parameter name="user" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="tests.LoginTest"/>
+            <parameter name="browser" value="chrome"/>
+        </classes>
+    </test>
+
+    <test name="Cart Test, Locator Test - Edge">
+        <classes>
+            <class name="tests.CartTest"/>
+            <class name="tests.LocatorTest"/>
+            <parameter name="browser" value="edge"/>
+        </classes>
+    </test>
+
+    <test name="Product Test - Firefox">
+        <classes>
+            <class name="tests.ProductTest"/>
+            <parameter name="browser" value="firefox"/>
+        </classes>
+    </test>
+</suite>

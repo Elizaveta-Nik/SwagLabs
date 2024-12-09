@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -9,7 +10,10 @@ public class CartTest extends BaseTest {
     String productName = "Sauce Labs Backpack";
     String[] productNames = {"Sauce Labs Backpack", "Sauce Labs Bike Light"};
 
-    @Test
+    @Test(testName = "Проверка добавления товара в корзину",
+            description = "Проверка позитивного добавления товара в корзину",
+            priority = 1,
+            groups = {"cart"})
     public void addItemToCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -27,7 +31,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка добавления нескольких товаров в корзину",
+            description = "Проверка позитивного добавления товаров в корзину",
+            priority = 2,
+            groups = {"cart"})
     public void addMultipleItemsToCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -48,7 +55,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка стоимости товара в корзине",
+            description = "Стоимость товара должна совпадать с ожидаемой ценой",
+            priority = 3,
+            groups = {"cart"})
     public void checkItemPricesInCart() {
         SoftAssert softAssert = new SoftAssert();
         String expectedPrice = "$29.99";
@@ -63,7 +73,10 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка удаления товара из корзины",
+            description = "Товар должен удаляться из корзины",
+            priority = 4,
+            groups = {"cart"})
     public void removeItemFromCart() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -77,14 +90,19 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка добавления и удаления товаров из корзины",
+            description = "Проверяет, что товары могут быть добавлены и затем удалены из корзины.",
+            priority = 5,
+            groups = {"cart"})
     public void addAndRemoveMultipleItems() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
         loginPage.login(user, password);
+
         for (String productName : productNames) {
             productsPage.clickAddButton(productName);
         }
+
         productsPage.clickShoppingCart();
 
         for (String productName : productNames) {
@@ -96,15 +114,20 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(testName = "Проверка работы кнопки 'ContinueShopping' для последующего добавления товаров в корзину",
+            description = "Проверяет, что кнопка 'Continue Shopping' возвращает пользователя на страницу товаров.",
+            priority = 6,
+            groups = {"cart"})
     public void continueShopping() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
         loginPage.login(user, password);
-        productsPage.clickAddButton("Sauce Labs Backpack");
+
+        productsPage.clickAddButton(productName);
         productsPage.clickShoppingCart();
 
         cartPage.clickContinueShopping();
+
         softAssert.assertEquals(productsPage.getTitle(),
                 "Products",
                 "Название страницы должно быть 'Products' после продолжения покупок.");
