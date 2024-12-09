@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "loginData")
     public Object[][] loginData() {
         return new Object[][]{
-                {"", "secret_sauce", "Epic sadface: Username is require"},
+                {"", "secret_sauce", "Epic sadface: Username is required"},
                 {"standard_user", "", "Epic sadface: Password is required"},
                 {"standard_user", "123243", "Epic sadface: Username and password do not match any user in this service"}
         };
