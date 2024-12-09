@@ -36,12 +36,12 @@ public class BaseTest {
         } else if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions options = new EdgeOptions();
             options.addArguments("headless");
-            driver = new EdgeDriver();
+            driver = new EdgeDriver(options);
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("headless");
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(options);
             driver.manage().window().maximize();
         } else {
             throw new IllegalArgumentException("Браузер не поддерживается: " + browser);
