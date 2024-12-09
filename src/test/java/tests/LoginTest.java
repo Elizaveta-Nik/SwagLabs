@@ -3,6 +3,7 @@ package tests;
 
 import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import retrysingletest.Retry;
@@ -15,8 +16,7 @@ public class LoginTest extends BaseTest {
     @Test(testName = "Проверка позитивного логина",
             description = "Проверка позитивного логина",
             priority = 1,
-            groups = {"login"},
-            retryAnalyzer = Retry.class)
+            groups = {"login"})
     @Epic("Модуль логина интернет-магазина")//Глобальная задача
     @Feature("TMS-25")//Подгруппа эпика
     @Story("TMS-25.11")//"Кто я, что я, чего хочу"
@@ -25,9 +25,9 @@ public class LoginTest extends BaseTest {
     @Owner("Elizaveta Nikolaenya")//кто ответственный
     @Issue("BUG-10")
     @TmsLink("TestKeys-10")
-    @Description("Проверка входа в систему интернет магазина юзера с позитивными кредами")//обязательно, подробное описание
+    @Description("Проверка входа в систему интернет магазина юзера с позитивными кредами.")//обязательно, подробное описание
     @Flaky//если тест нестабильный
-    public void checkLogin(String user, String password) {
+    public void checkLogin(@Optional ("standard_user") String user, @Optional("secret_sauce") String password) {
         loginPage.open();
         loginPage.login(user, password);
         assertEquals(productsPage.getTitle(),
@@ -48,8 +48,8 @@ public class LoginTest extends BaseTest {
             testName = "Проверка негативного логина",
             description = "Проверка негативного логина",
             priority = 2,
-            groups = {"login"},
-            retryAnalyzer = Retry.class)
+            groups = {"login"})
+    @Description("Проверка негативного входа в систему: негативный username, негативный password, некорректное значение password.")
     public void checkLoginWithInvalidData(String user, String password, String expectedError) {
         loginPage.open();
         loginPage.login(user, password);

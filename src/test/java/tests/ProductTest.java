@@ -1,6 +1,6 @@
 package tests;
 
-import org.testng.annotations.Parameters;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -19,6 +19,7 @@ public class ProductTest extends BaseTest {
             description = "Проверяет, что пользователь может выйти через меню бургера.",
             priority = 1,
             groups = {"product"})
+    @Description("Проверяет, что пользователь может выйти через меню бургера.")
     public void checkLogoutFromBurgerMenu() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -38,6 +39,7 @@ public class ProductTest extends BaseTest {
             description = "Проверяет, что товары сортируются по имени от A до Z.",
             priority = 2,
             groups = {"product"})
+    @Description("Проверяет, что товары сортируются по имени от A до Z.")
     public void checkProductSortByNameAtoZ() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -61,6 +63,7 @@ public class ProductTest extends BaseTest {
             description = "Проверяет, что товары сортируются по имени от Z до A.",
             priority = 3,
             groups = {"product"})
+    @Description("Проверяет, что товары сортируются по имени от Z до A.")
     public void checkProductSortByNameZtoA() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -85,6 +88,7 @@ public class ProductTest extends BaseTest {
             description = "Проверяет, что товары сортируются по цене от низкой к высокой.",
             priority = 4,
             groups = {"product"})
+    @Description("Проверяет, что товары сортируются по цене от низкой к высокой.")
     public void checkSortByPriceLowToHigh() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -105,6 +109,7 @@ public class ProductTest extends BaseTest {
             description = "Проверяет, что товары сортируются по цене от высокой к низкой.",
             priority = 5,
             groups = {"product"})
+    @Description("Проверяет, что товары сортируются по цене от высокой к низкой.")
     public void checkSortByPriceHighToLow() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
