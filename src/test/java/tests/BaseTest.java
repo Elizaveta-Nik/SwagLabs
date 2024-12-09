@@ -1,14 +1,17 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.CartPage;
 import pages.LoginPage;
 import pages.ProductsPage;
+import utils.AllureUtils;
 
 import java.time.Duration;
 
@@ -45,7 +48,11 @@ public class BaseTest {
 
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    @Description("Закрытие браузера")
+    public void tearDown(ITestResult result) {
+        if (ITestResult.FAILURE == result.getStatus()){
+            AllureUtils.takeScreenshot((driver));
+        }
         driver.quit();
     }
 }
