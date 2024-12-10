@@ -7,12 +7,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.CartPage;
 import pages.LoginPage;
 import pages.ProductsPage;
+import utils.PropertyReader;
 
 import java.time.Duration;
+
+import static utils.AllureUtils.takeScreenshot;
 
 public class BaseTest {
 
@@ -20,6 +24,9 @@ public class BaseTest {
     LoginPage loginPage;
     ProductsPage productsPage;
     CartPage cartPage;
+
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
@@ -52,8 +59,10 @@ public class BaseTest {
 
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-
+    public void tearDown(ITestResult result) {
+        if(ITestResult.FAILURE == result.getStatus()) {
+            takeScreenshot(driver);
+        }
         driver.quit();
     }
 }

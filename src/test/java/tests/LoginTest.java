@@ -3,7 +3,6 @@ package tests;
 
 import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import retrysingletest.Retry;
 
@@ -11,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
 
-    @Parameters({"user", "password"})
+
     @Test(testName = "Проверка позитивного логина",
             description = "Проверка позитивного логина",
             priority = 1,
@@ -27,7 +26,7 @@ public class LoginTest extends BaseTest {
     @TmsLink("TestKeys-10")
     @Description("Проверка входа в систему интернет магазина юзера с позитивными кредами")//обязательно, подробное описание
     @Flaky//если тест нестабильный
-    public void checkLogin(String user, String password) {
+    public void checkLogin() {
         loginPage.open();
         loginPage.login(user, password);
         assertEquals(productsPage.getTitle(),

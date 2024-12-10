@@ -7,8 +7,6 @@
     </listeners>
 
     <test name="Login Tests - Chrome">
-        <parameter name="user" value="standard_user"/>
-        <parameter name="password" value="secret_sauce"/>
         <classes>
             <class name="tests.LoginTest"/>
             <parameter name="browser" value="chrome"/>
