@@ -15,7 +15,7 @@
         <testng.version>7.10.2</testng.version><!-- или версия 7.4.0, чтобы работали скриншоты в алюр -->
         <selenium.version>4.26.0</selenium.version>
         <logback.version>1.5.12</logback.version>
-        <suitXmlFile>src/test/resources/CrossBrowser.xml</suitXmlFile>
+        <suitXmlFile>src/test/resources/SmokeTest.xml</suitXmlFile>
         <allure.version>2.24.0</allure.version>
         <aspectj.version>1.9.20.1</aspectj.version>
     </properties>
