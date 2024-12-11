@@ -17,6 +17,7 @@ on:
 env:
   USERNAME: ${{secrets.SD_USER}}
   PASSWORD: ${{secrets.SD_PASSWORD}}
+  BASEURL: ${{secrets.SD_baseURL}}
 
 jobs:
   build:
@@ -37,4 +38,4 @@ jobs:
         with:
           browser: firefox
       - name: Test run
-        run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD
+        run: mvn clean test -Duser=$USERNAME -Dpassword=$PASSWORD -DbaseURL=$BASEURL
