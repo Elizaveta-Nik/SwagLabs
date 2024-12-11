@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
 
     @Step("Открытие страницы логина")
     public void open() {
-        driver.get("https://www.saucedemo.com/");
+        driver.get(baseURL);
     }
 
     @Step("Вход в систему с логином {user} и паролем {password}")

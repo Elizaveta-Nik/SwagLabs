@@ -6,8 +6,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class CartTest extends BaseTest {
-    String user = "standard_user";
-    String password = "secret_sauce";
+
     String productName = "Sauce Labs Backpack";
     String[] productNames = {"Sauce Labs Backpack", "Sauce Labs Bike Light"};
 

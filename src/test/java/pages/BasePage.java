@@ -2,10 +2,13 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.PropertyReader;
 
 import java.time.Duration;
 
 public abstract class BasePage {
+
+    String baseURL = System.getProperty("baseURL", PropertyReader.getProperty("baseURL"));
 
     WebDriver driver;
     WebDriverWait wait;

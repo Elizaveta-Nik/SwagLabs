@@ -27,6 +27,7 @@ public class BaseTest {
     String user = System.getProperty("user", PropertyReader.getProperty("user"));
     String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
+
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
 //    @BeforeMethod(groups = {"login", "product", "cart"})-второй вариант запуска, когда нужно отдельные группы запустить

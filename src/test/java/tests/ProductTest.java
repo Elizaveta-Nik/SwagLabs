@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
 
 public class ProductTest extends BaseTest {
 
-    String user = "standard_user";
-    String password = "secret_sauce";
-
     @Test(testName = "Проверка выхода из меню",
             description = "Проверяет, что пользователь может выйти через меню бургера.",
             priority = 1,
