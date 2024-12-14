@@ -8,7 +8,6 @@ import java.time.Duration;
 
 public abstract class BasePage {
 
-    String baseURL = System.getProperty("baseURL", PropertyReader.getProperty("baseURL"));
 
     WebDriver driver;
     WebDriverWait wait;
